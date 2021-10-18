@@ -1,4 +1,4 @@
-let html = document.querySelector("#demo")
+let html = document.querySelector("#html")
 let style = document.querySelector("#style")
 
 let string =`/*你好，我叫小郭
@@ -7,10 +7,10 @@ let string =`/*你好，我叫小郭
 */
 #div1{ 
     border: 1px solid red;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
 }
-/*接下来1我把八卦变成一个八卦图
+/*接下来我把这个div变成一个八卦图
  *主要看好了
  *首先把div变成一个圆
 */
@@ -30,14 +30,25 @@ let string =`/*你好，我叫小郭
 }
 /*加两个抽象的小球*/
 #div1::before{
-    width: 200px;
-    height:200px;
-    border: 1px solid red;
+    width: 100px;
+    height:100px;
     top: 0;
-    left: 50%
+    left: 50%;
     transform: translateX(-50%);
+    background: #fff;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 25%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 100%);
 
 }
+#div1::after{
+    width: 100px;
+    height:100px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,0,0,1) 1%, rgba(0,0,0,1) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%);}
 
 
 `;
@@ -59,16 +70,14 @@ function step() {
           
         html.innerHTML = String2;
         style.innerHTML = string.substring(0, n)
-
+        window.scrollTo(0,99999);
+        html.scrollTo(0,99999);
         if (n < string.length -1 ) { 
             //如果n不是最后一个就继续
             n += 1 
             step();
         }
-
-
-
-    }, 0);
+    }, 50);
 }
 step(); // 1=>2
 
